@@ -4,10 +4,8 @@ function CreateBlog() {
     const [picture, setPicture] = useState(null);
 
   const onChangePicture = e => {
-    if (e.target.files[0]) {
-      console.log("picture: ", e.target.files[0]);
-      setPicture(e.target.files[0]);
-    }
+    console.log(e.taget.value);
+    setPicture(e.target.value);
   };
 
   return (
@@ -20,8 +18,8 @@ function CreateBlog() {
           <input type="text" className="form-control" />
         </div>
         <div className="mb-3">
-          <label>Banner Image</label>
-          <input type="file" className="form-control" onChange={onChangePicture}/>
+          <label>Banner Image URL</label>
+          <input type="text" className="form-control" onChange={onChangePicture}/>
         </div>
         <div className="mb-3">
           <label>Tell your story ... </label>

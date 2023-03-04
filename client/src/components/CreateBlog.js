@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 function CreateBlog() {
-    const [picture, setPicture] = useState(null);
+    const [picture, setPicture] = useState("");
 
   const onChangePicture = e => {
     console.log(e.taget.value);
@@ -19,7 +19,7 @@ function CreateBlog() {
         </div>
         <div className="mb-3">
           <label>Banner Image URL</label>
-          <input type="text" className="form-control" onChange={onChangePicture}/>
+          <input type="text" value = {picture} className="form-control" onChange={onChangePicture}/>
         </div>
         <div className="mb-3">
           <label>Tell your story ... </label>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace BlogAPI.Models
@@ -12,8 +13,11 @@ namespace BlogAPI.Models
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PublishDate { get; set; }
-        public int AuthorId { get; set; }
-        public User Author { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+
+        [DefaultValue("https://tse2.mm.bing.net/th?id=OIP.wsVlPGCwZ8_WwYZmtpKbAAHaCZ&pid=Api&P=0")]
+        public string? ImageURL { get; set; }
+
+        public string? Category { get; set; }
+        
     }
 }

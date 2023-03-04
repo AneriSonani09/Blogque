@@ -2,7 +2,7 @@ import React from 'react'
 
 function Post1() {
     const style1 = {
-        backgroundImage:"assets/img/demopic/1.jpg"
+        backgroundImage: "../assets/demo.jpeg"
     }
   return (
     <div>

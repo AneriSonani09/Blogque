@@ -9,7 +9,7 @@ function NavBar() {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container">
-			<Link class="navbar-brand" to="/"> <img src="../../public/img/banner.png" alt="B" /> </Link>
+			<Link class="navbar-brand" to="/"> <img src={process.env.PUBLIC_URL + '/img/banner.png'} alt="Logo" /> </Link>
 	        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		    <ul class="navbar-nav ml-auto">
 			    <li class="nav-item active"> <Link class="nav-link" to="/">Home</Link></li>

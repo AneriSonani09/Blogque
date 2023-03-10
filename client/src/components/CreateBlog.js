@@ -19,7 +19,7 @@ function CreateBlog() {
         </div>
         <div className="mb-3">
           <label>Banner Image URL</label>
-          <input type="text" value = {picture} className="form-control" onChange={onChangePicture}/>
+          <input type="text"  className="form-control" onChange={onChangePicture}/>
         </div>
         <div className="mb-3">
           <label>Tell your story ... </label>

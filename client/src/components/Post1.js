@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
-function Post1() {
+function Post1(props) {
     const style1 = {
         backgroundImage: "../assets/demo.jpeg"
     }
+
+	const [blog,setBlog] = useState();
+	const id = props.id;
+
+	const getBlogDetails = () => {
+		axios.get(`https://localhost:7263/api/BlogPosts/${id}`)
+		.then((response) => {
+		  console.log(response.data);
+		  console.log("Blog over");
+		  setBlog(response.data);
+		  console.log(blog);
+		})
+		.catch((err) =>{
+		  console.log(err);
+		})
+	}
+
+	useEffect(() => {
+		getBlogDetails();
+	  }, [])
+
   return (
     <div>
       <div class="card">
@@ -16,8 +38,8 @@ function Post1() {
 				</div>
 				<div class="col-md-7">
 					<div class="card-block">
-						<h2 class="card-title"><a href="post.html">We're living some strange times</a></h2>
-						<h4 class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
+						<h2 class="card-title"><a href="post.html">{blog.title} </a></h2>
+						<h4 class="card-text">{blog.content}</h4>
 						<div class="metafooter">
 							<div class="wrapfooter">
 								<span class="meta-footer-thumb">

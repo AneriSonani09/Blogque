@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <Featured />
+      {/* <Featured /> */}
       <Posts />
       <Footer />
     </div>

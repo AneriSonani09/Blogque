@@ -24,11 +24,11 @@ namespace blogqueapi.Migrations
 
             modelBuilder.Entity("blogqueapi.Model.BlogPost", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogId"));
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
@@ -47,9 +47,55 @@ namespace blogqueapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlogId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("blogqueapi.Model.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("blogqueapi.Model.BlogPost", b =>
+                {
+                    b.HasOne("blogqueapi.Model.User", "Author")
+                        .WithMany("BlogPosts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("blogqueapi.Model.User", b =>
+                {
+                    b.Navigation("BlogPosts");
                 });
 #pragma warning restore 612, 618
         }

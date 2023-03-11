@@ -11,6 +11,8 @@ namespace blogqueapi.Model
 
         public DbSet<BlogPost> BlogPosts { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         
 
     }

@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from 'react';
 
 function NavBar() {
+  const token = localStorage.getItem("usertoken")
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('usertoken');
+    navigate('/')
+  };
   return (
     <div>
       <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
@@ -9,13 +16,14 @@ function NavBar() {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container">
-			<Link class="navbar-brand" to="/"> <img src={process.env.PUBLIC_URL + '/img/banner.png'} alt="Logo" /> </Link>
+			    <Link class="navbar-brand" to="/"> <img src={process.env.PUBLIC_URL + '/img/banner.png'} alt="Logo" /> </Link>
 	        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		    <ul class="navbar-nav ml-auto">
 			    <li class="nav-item active"> <Link class="nav-link" to="/">Home</Link></li>
-                <li class="nav-item"><Link class="nav-link" to="/">Stories</Link></li>
-			    <li class="nav-item"><Link class="nav-link" to="create">Your Blogs</Link></li>
-				<li class="nav-item"><Link class="nav-link" to="login">Login</Link></li>
+			    {token && <li class="nav-item"><Link class="nav-link" to="create">Create New</Link></li>}
+				  {!token && <li class="nav-item"><Link class="nav-link" to="login">Login</Link></li> }
+          {!token && <li class="nav-item"><Link class="nav-link" to="signup">Signup</Link></li> }
+          {token && <li class="nav-item"><button class="nav-link" onClick={handleLogout}>Logout</button></li> }
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 			    <input class="form-control mr-sm-2" type="text" placeholder="Search" />
@@ -24,14 +32,6 @@ function NavBar() {
 		    </div>
         </div>
     </nav>
-    <div class="container">
-	    <div class="mainheading">
-		    <h1 class="sitetitle">Bolgque</h1>
-		    <p class="lead">
-			Discover the World through Words: Exploring Ideas, Cultures, and Perspectives
-		    </p>
-	    </div>
-    </div>
     </div>
   )
 }

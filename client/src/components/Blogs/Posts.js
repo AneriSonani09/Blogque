@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Post2 from './Blogs/Post2';
+import Post2 from './Post2';
 
-function Featured() {
-
+function Posts() {
   const [ fblogs, setBlogs ] = useState([]);
-
+  
   const getFeaturedBlgs = () => {
     axios.get('https://localhost:7079/api/BlogPosts')
     .then((response) => {
@@ -24,20 +23,28 @@ function Featured() {
 
   return (
     <div>
-      <section class="featured-posts container">
+      <div class="container">
+	      <div class="mainheading">
+		      <h1 class="sitetitle">Bolgque</h1>
+		      <p class="lead">
+			      Discover the World through Words: Exploring Ideas, Cultures, and Perspectives
+		      </p>
+	      </div>
+      </div>
+      <section class="recent-posts container">
 	    <div class="section-title">
-		    <h2><span>Featured</span></h2>
+		    <h2><span>All Stories</span></h2>
 	    </div>
-	    <div class="card-columns listfeaturedtag">
-        {fblogs && fblogs.map((i) => {
-          return (
+	    <div class="card-columns listrecent">
+          {fblogs && fblogs.map((i) => {
+            return (
             <Post2 id={i.id} key={i.id} />
-          );
-        })}
+            );
+          })}
         </div>
-	</section>
+      </section>
     </div>
   )
 }
 
-export default Featured
+export default Posts

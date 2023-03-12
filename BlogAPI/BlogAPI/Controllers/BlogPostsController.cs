@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BlogAPI.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class BlogPostsController : ControllerBase
@@ -23,6 +23,7 @@ namespace BlogAPI.Controllers
         }
 
         // GET: api/BlogPosts
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BlogPost>>> GetBlogPosts()
         {
@@ -34,6 +35,7 @@ namespace BlogAPI.Controllers
         }
 
         // GET: api/BlogPosts/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<BlogPost>> GetBlogPost(int id)
         {
@@ -54,6 +56,7 @@ namespace BlogAPI.Controllers
         // PUT: api/BlogPosts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutBlogPost(int id, BlogPost blogPost)
         {
             if (id != blogPost.Id)
@@ -85,6 +88,7 @@ namespace BlogAPI.Controllers
         // POST: api/BlogPosts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<BlogPost>> PostBlogPost(BlogPost blogPost)
         {
           if (_context.BlogPosts == null)
@@ -99,6 +103,7 @@ namespace BlogAPI.Controllers
 
         // DELETE: api/BlogPosts/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
             if (_context.BlogPosts == null)

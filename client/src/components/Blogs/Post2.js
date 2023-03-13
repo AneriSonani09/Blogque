@@ -6,7 +6,7 @@ function Post2(props) {
 	const [blog,setBlog] = useState("");
 	const [author,setAuthor] = useState("");
 	const id = props.id;
-
+	 
 	const getBlogDetails = () => {
 		axios.get(`https://localhost:7079/api/BlogPosts/${id}`)
 		.then((response) => {
@@ -19,15 +19,17 @@ function Post2(props) {
 		  console.log(err);
 		})
 	}
-
+    const aid = blog.authorId;
+	console.log("Author id ")
+	console.log(aid);
 	const pdate = moment(blog.publishDate).format('MMM D, YYYY');
 	const getAuthor = () => {
-		axios.get(`https://localhost:7079/api/Users/${id}`)
+		axios.get(`https://localhost:7079/api/Users/${aid}`)
 		.then((response) => {
-		  console.log(response.data);
+		  console.log(response);
 		  console.log("Author details");
 		  setAuthor(response.data.username);
-		//   console.log(blog);
+		  console.log(author);
 		})
 		.catch((err) =>{
 		  console.log(err);

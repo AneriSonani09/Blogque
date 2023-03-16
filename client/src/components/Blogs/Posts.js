@@ -8,10 +8,10 @@ function Posts() {
   const getFeaturedBlgs = () => {
     axios.get('https://localhost:7079/api/BlogPosts')
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setBlogs(response.data);
-      console.log("Dhr");
-      console.log(fblogs);
+      // console.log("Dhr");
+      // console.log(fblogs);
     })
     .catch((err) =>{
       console.log(err);

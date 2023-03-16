@@ -10,26 +10,26 @@ function Post2(props) {
 	const getBlogDetails = () => {
 		axios.get(`https://localhost:7079/api/BlogPosts/${id}`)
 		.then((response) => {
-		  console.log(response.data);
-		  console.log("Blog over");
+		//   console.log(response.data);
+		//   console.log("Blog over");
 		  setBlog(response.data);
-		  console.log(blog);
+		//   console.log(blog);
 		})
 		.catch((err) =>{
 		  console.log(err);
 		})
 	}
     const aid = blog.authorId;
-	console.log("Author id ")
-	console.log(aid);
+	console.log(`Author Id ${aid}`)
 	const pdate = moment(blog.publishDate).format('MMM D, YYYY');
+
 	const getAuthor = () => {
 		axios.get(`https://localhost:7079/api/Users/${aid}`)
 		.then((response) => {
-		  console.log(response);
-		  console.log("Author details");
+		//   console.log(response);
+		//   console.log("Author details");
 		  setAuthor(response.data.username);
-		  console.log(author);
+		//   console.log(author);
 		})
 		.catch((err) =>{
 		  console.log(err);
@@ -45,7 +45,7 @@ function Post2(props) {
     <div>
       <div class="card">
 			<div class="card-block">
-				<h2 class="card-title"><a href="post.html">{blog.title}</a></h2>
+				<h2 class="card-title">{blog.title}</h2>
 				<h4 class="card-text">{blog.content}</h4>
 				<div class="metafooter">
 					<div class="wrapfooter">

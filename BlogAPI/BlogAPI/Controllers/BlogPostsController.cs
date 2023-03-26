@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BlogAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Reflection.Metadata;
 
 namespace BlogAPI.Controllers
 {
@@ -51,6 +52,15 @@ namespace BlogAPI.Controllers
             }
 
             return blogPost;
+        }
+
+        // get blog by user id
+        [AllowAnonymous]
+        [HttpGet("/blog/{id}")]
+        public async Task<ActionResult<IEnumerable<BlogPost>>> GetBlogsById(long id)
+        {
+            return await _context.BlogPosts.Where(x => x.AuthorId == id).ToListAsync();
+
         }
 
         // PUT: api/BlogPosts/5

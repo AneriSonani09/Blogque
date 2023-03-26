@@ -21,7 +21,7 @@ function CreateBlog() {
   const [blog, setBlog] = useState({
     Title : "",
     Content : "",
-    ImageURL : "",
+    imageURL : pictureUrl,
     PublishDate : date,
     Category : "",
     AuthorId : uid
@@ -71,8 +71,11 @@ function CreateBlog() {
           <input type="text" 
                 className="form-control" 
                 placeholder="Blog Banner URL"
-                name="ImageURL"
-							  onChange={onChangePicture}
+                name="imageURL"
+							  onChange={(e) => {
+                  onChangePicture(e);
+                  setValue(e);
+                }}
 							  value={blog.pictureUrl} />
         </div>
         <div className="mb-3">

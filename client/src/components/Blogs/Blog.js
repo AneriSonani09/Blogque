@@ -3,7 +3,10 @@ import axios from 'axios';
 import './Blog.css';
 
 function Blog() {
-    const id = localStorage.getItem("blogDetail")
+     //code for geeting blogid
+     const path = window.location.pathname
+     const array = path.split("/")
+     const id = array[2]
     const [blog,setBlog] = useState("");
 
     const getBlogDetails = () => {

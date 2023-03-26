@@ -21,7 +21,7 @@ function NavBar() {
 		    <ul class="navbar-nav ml-auto">
 			    <li class="nav-item active"> <Link class="nav-link" to="/">Home</Link></li>
 			    {token && <li class="nav-item"><Link class="nav-link" to="create">Create New</Link></li>}
-          {/* {token && <li class="nav-item"> <Link class="nav-link" to="/">Welcome User</Link></li>} */}
+          {token && <li class="nav-item"> <Link class="nav-link" to="profile">Profile</Link></li>} 
 				  {!token && <li class="nav-item"><Link class="nav-link" to="login">Login</Link></li> }
           {!token && <li class="nav-item"><Link class="nav-link" to="signup">Signup</Link></li> }
           {token && <li class="nav-item"><button class="nav-link" onClick={handleLogout}>Logout</button></li> }

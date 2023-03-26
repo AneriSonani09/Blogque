@@ -10,7 +10,7 @@ function CreateBlog() {
   const token = array[0]
   const uid = array[1]
 
-  const [pictureUrl, setPictureUrl] = useState('');
+  const [pictureUrl, setPictureUrl] = useState("");
 
   const onChangePicture = (event) => {
     setPictureUrl(event.target.value);
@@ -21,7 +21,7 @@ function CreateBlog() {
   const [blog, setBlog] = useState({
     Title : "",
     Content : "",
-    ImageURL : pictureUrl,
+    ImageURL : "",
     PublishDate : date,
     Category : "",
     AuthorId : uid

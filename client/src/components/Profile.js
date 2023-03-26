@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react';
+
 
 function Profile() {
-  return (
-    <div>
-      
-    </div>
+  return(
+    <div></div>
   )
 }
 

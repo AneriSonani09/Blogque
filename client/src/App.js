@@ -5,6 +5,8 @@ import Login from './components/Authentication/Login';
 import Signup from "./components/Authentication/Signup";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Blog from "./components/Blogs/Blog";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="create" element={ <CreateBlog/> } />
         <Route path="login" element={ <Login/> } />
         <Route path="signup" element={ <Signup/> } />
+        <Route path="blog" element={ <Blog/> } />
+        <Route path="profile" element={ <Profile/> } />
       </Routes>
       <Footer />
     </>

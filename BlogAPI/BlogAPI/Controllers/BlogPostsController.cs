@@ -64,7 +64,6 @@ namespace BlogAPI.Controllers
         }
 
         // PUT: api/BlogPosts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize]
         public async Task<IActionResult> PutBlogPost(int id, BlogPost blogPost)
@@ -73,9 +72,7 @@ namespace BlogAPI.Controllers
             {
                 return BadRequest();
             }
-
             _context.Entry(blogPost).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -113,7 +110,7 @@ namespace BlogAPI.Controllers
 
         // DELETE: api/BlogPosts/5
         [HttpDelete("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
             if (_context.BlogPosts == null)

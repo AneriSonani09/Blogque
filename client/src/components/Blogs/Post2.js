@@ -17,23 +17,30 @@ function Post2(props) {
 		  console.log(err);
 		})
 	}
-    const aid = blog.authorId;
-	console.log(`Author Id ${aid}`)
+    
 	const pdate = moment(blog.publishDate).format('MMM D, YYYY');
 
+	const aid = blog.authorId;
 	const getAuthor = () => {
 		axios.get(`https://localhost:7079/api/Users/${aid}`)
 		.then((response) => {
 		  setAuthor(response.data.username);
+		  console.log("Author id success")
+		  console.log(response.data.username)
 		})
 		.catch((err) =>{
+		  console.log("Author id error")
 		  console.log(err);
 		})
 	}
 
+	if(blog.authorId !== undefined){
+		console.log(`Author Id ${aid}`)
+		getAuthor();
+	}
+
 	useEffect(() => {
 		getBlogDetails();
-		getAuthor();
 	  }, [])
 
   return (
@@ -41,7 +48,7 @@ function Post2(props) {
       <div class="card">
 			<div class="card-block">
 				<h2 class="card-title">{blog.title}</h2>
-				{blog.content &&	<h4 class="card-text">{blog.content.slice(0,20)}</h4>}
+				{blog.content &&	<h4 class="card-text">{blog.content.slice(0,50)}</h4>}
 				<div class="metafooter">
 					<div class="wrapfooter">
 						<span class="meta-footer-thumb">

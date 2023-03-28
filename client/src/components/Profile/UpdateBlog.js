@@ -96,7 +96,7 @@ function UpdateBlog() {
         </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
-            Create
+            Update
           </button>
         </div>
       </form>

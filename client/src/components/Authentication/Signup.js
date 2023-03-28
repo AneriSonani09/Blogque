@@ -23,7 +23,7 @@ function Signup() {
       toast.success('You are registered!');
     } catch (error) {
       console.error(error);
-      toast.error('Registration Failed!');
+      toast.error('Username already taken!');
     }
   }
 
